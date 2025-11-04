@@ -3,6 +3,7 @@ var router = express.Router();
 const moment = require("moment");
 
 const Trip = require("../models/trips");
+const { checkBody } = require("../modules/checkApi");
 
 /* GET trips listing. */
 router.get("/", (req, res) => {
@@ -16,17 +17,19 @@ router.post("/byDate", (req, res) => {
   const to = req.body.arrival;
   const date = req.body.date;
   const dateTimestamp = new Date(date);
-  console.log(dateTimestamp);
+
+  if (!checkBody( [from, to, date])) {
+    res.json({ result: false, error: "missing or empty fields" });
+    return;
+  }
 
   Trip.find({
     departure: { $regex: new RegExp(from, "i") },
     arrival: { $regex: new RegExp(to, "i") },
-    date: {$gte: dateTimestamp }
-    })
-    .then((trips) => {
-        res.json({ trips });
-    });
-
+    date: { $gte: dateTimestamp },
+  }).then((trips) => {
+    res.json({ trips });
+  });
 });
 
 module.exports = router;
