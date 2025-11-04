@@ -1,0 +1,26 @@
+{
+    "date": {
+        "$date": "2025-11-04T09:58:25.019Z"
+    },
+    "total": 124,
+    "isBooking": false,
+    "trips": [
+	{
+            "departure": "Bruxelles",
+            "arrival": "Marseille",
+            "date": {
+                "date": "2025-11-04T09:58:25.019Z"
+            },
+            "price": 61
+        },
+			{
+            "departure": "Lyon",
+            "arrival": "Paris",
+            "date": {
+                "date": "2025-11-05T19:50:25.019Z"
+            },
+            "price": 84
+        },
+		
+    ]
+}
