@@ -8,6 +8,6 @@ const tripSchema = new mongoose.Schema({
   price: Number
 });
 
-module.exports = mongoose.model('Trip', tripSchema);
+module.exports = mongoose.model('Trips', tripSchema);
 
 // schéma à été rajouté 
