@@ -1,10 +1,8 @@
 const mongoose = require('mongoose');
+require('dotenv').config(); // <-- très important !
 
-const connectionString = 'mongodb+srv://admin:K2V8BfpuDfe9CA2H@cluster0.dogtozg.mongodb.net/tickethack';
+const connectionString = process.env.MONGO_URI;
 
 mongoose.connect(connectionString, { connectTimeoutMS: 2000 })
-  .then(() => console.log('Database connected'))
-  .catch(error => console.error(error));
-
-
-// connection à mongoose
+  .then(() => console.log('✅ Database connected'))
+  .catch(error => console.error('❌ Database error:', error));
